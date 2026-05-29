@@ -1710,7 +1710,7 @@ dependencies = [
 
 [[package]]
 name = "es3"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "base64",
  "bergshamra-core",
@@ -1726,7 +1726,7 @@ dependencies = [
 
 [[package]]
 name = "es3-cli"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "assert_cmd",
  "clap",
@@ -1738,7 +1738,7 @@ dependencies = [
 
 [[package]]
 name = "es3-web"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "dioxus",
  "dioxus-i18n",
