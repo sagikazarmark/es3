@@ -15,7 +15,7 @@ categories.workspace = true
 base64 = "0.22.1"
 roxmltree = "0.21.1"
 serde = { version = "1.0.228", features = ["derive"] }
-sha2 = "0.10.9"
+sha2 = "0.11.0"
 thiserror = "2.0.18"
 x509-cert = "0.2.5"
 zip = { version = "9.0.0-pre2", default-features = false, features = ["deflate-flate2-zlib-rs"] }
