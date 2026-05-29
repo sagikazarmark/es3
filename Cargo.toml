@@ -1,0 +1,31 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+[workspace.package]
+version = "0.0.1"
+description = "ES3 dossier tools with XMLDSIG verification"
+edition = "2024"
+rust-version = "1.92"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/sagikazarmark/es3"
+homepage = "https://github.com/sagikazarmark/es3"
+keywords = ["es3", "dossier", "xmldsig", "xml", "extraction"]
+categories = ["parser-implementations", "cryptography", "command-line-utilities"]
+
+[workspace.dependencies]
+es3 = { path = "crates/es3", version = "0.0.1" }
+
+tempfile = "3.27.0"
+
+[workspace.metadata.release]
+sign-commit = true
+sign-tag = true
+shared-version = true
+tag-message = "Release {{version}}"
+tag-name = "v{{version}}"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

@@ -1,0 +1,64 @@
+[package]
+name = "es3-web"
+description = "Dioxus ES3 dossier extractor for web"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish = false
+
+[lib]
+name = "es3_web"
+path = "src/lib.rs"
+
+[[bin]]
+name = "es3-web"
+path = "src/main.rs"
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]
+devtools = ["dioxus/devtools"]
+
+[dependencies]
+es3 = { workspace = true }
+
+dioxus = { version = "0.7.9", default-features = false, features = [
+  "asset",
+  "document",
+  "hooks",
+  "html",
+  "launch",
+  "macro",
+  "signals",
+] }
+dioxus-i18n = "0.5.1"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# Dioxus web history code is checked on native targets when the web feature is active.
+web-sys = { version = "0.3.99", features = ["Location"] }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+js-sys = "0.3.99"
+wasm-bindgen = "0.2.122"
+web-sys = { version = "0.3.99", features = [
+  "Blob",
+  "CssStyleDeclaration",
+  "Document",
+  "Element",
+  "HtmlAnchorElement",
+  "HtmlElement",
+  "Location",
+  "Node",
+  "Storage",
+  "Url",
+  "Window",
+] }
+
+[dev-dependencies]
+dioxus-ssr = "0.7.9"
+tempfile = { workspace = true }

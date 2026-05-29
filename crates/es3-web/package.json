@@ -1,0 +1,14 @@
+{
+  "name": "es3-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "css": "tailwindcss -i ./input.css -o ./assets/tailwind.css",
+    "css:watch": "tailwindcss -i ./input.css -o ./assets/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.0",
+    "daisyui": "5.5.20",
+    "tailwindcss": "4.3.0"
+  }
+}

@@ -1,0 +1,19 @@
+[application]
+name = "es3-web"
+asset_dir = "assets"
+out_dir = "dist"
+
+[web.app]
+title = "es3 Extractor"
+
+[web.watcher]
+reload_html = true
+watch_path = ["src", "assets", "input.css"]
+
+[web.resource]
+style = []
+script = []
+
+[web.resource.dev]
+style = []
+script = []

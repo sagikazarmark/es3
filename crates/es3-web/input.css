@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@source "./src/**/*.{rs,html,css}";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root[data-theme="light"],
+  main[data-theme="light"],
+  [data-theme="light"] {
+    color-scheme: light;
+    --color-base-100: oklch(98.7% 0.006 255);
+    --color-base-200: oklch(96.4% 0.008 255);
+    --color-base-300: oklch(89.8% 0.012 255);
+    --color-base-content: oklch(23.5% 0.024 255);
+    --color-primary: oklch(46% 0.118 252);
+    --color-primary-content: oklch(98.5% 0.006 255);
+    --color-secondary: oklch(49% 0.066 275);
+    --color-secondary-content: oklch(98.5% 0.006 255);
+    --color-accent: oklch(54% 0.088 195);
+    --color-accent-content: oklch(98.5% 0.006 255);
+    --color-neutral: oklch(27% 0.018 255);
+    --color-neutral-content: oklch(96% 0.008 255);
+    --color-info: oklch(63% 0.105 235);
+    --color-info-content: oklch(26% 0.045 235);
+    --color-success: oklch(58% 0.105 155);
+    --color-success-content: oklch(24% 0.04 155);
+    --color-warning: oklch(76% 0.13 80);
+    --color-warning-content: oklch(28% 0.052 70);
+    --color-error: oklch(59% 0.15 24);
+    --color-error-content: oklch(98% 0.008 24);
+    --radius-selector: 0.5rem;
+    --radius-field: 0.45rem;
+    --radius-box: 0.75rem;
+    --depth: 0;
+    --noise: 0;
+  }
+}
