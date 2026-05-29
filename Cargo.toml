@@ -10,6 +10,7 @@ rust-version = "1.92"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/sagikazarmark/es3"
 homepage = "https://github.com/sagikazarmark/es3"
+readme = "README.md"
 keywords = ["es3", "dossier", "xmldsig", "xml", "extraction"]
 categories = ["parser-implementations", "cryptography", "command-line-utilities"]
 
