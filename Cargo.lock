@@ -280,7 +280,7 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5d5802757aa34889959a88721cf22044fb13ab3b3fae556bfc94d3679f74d2b6"
 dependencies = [
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "bergshamra-xml",
  "uppsala",
 ]
@@ -295,6 +295,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "bergshamra-core"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "55b84b45351fa895727d60062a25e5423ccfbab715ed7fcc8bd584ffd32fbd04"
+dependencies = [
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "bergshamra-crypto"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -303,7 +312,7 @@ dependencies = [
  "aes",
  "aes-gcm",
  "aes-kw",
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "cbc",
  "des",
  "digest 0.10.7",
@@ -341,7 +350,7 @@ checksum = "79a4f0a9ec25c1a804dbb717ecf47da4579d41e35a0db127d83c29396fc79290"
 dependencies = [
  "base64",
  "bergshamra-c14n",
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "bergshamra-crypto",
  "bergshamra-keys",
  "bergshamra-transforms",
@@ -365,7 +374,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c4b1a745bef9d6ea50a8ed8145d364a85892a8b2e5a499b9435089b14df167b"
 dependencies = [
  "base64",
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "bergshamra-crypto",
  "bergshamra-pkcs12",
  "const-oid 0.10.2",
@@ -405,7 +414,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9d46759b4868e86830544904e1d15ae061bc387384c7a806703096fb51e380c5"
 dependencies = [
  "aes",
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "cbc",
  "cipher",
  "des",
@@ -424,7 +433,7 @@ checksum = "e467a1622d7fe18fc784f19d2ba0355dc82d2d425c90b2269c10361dc9b8e88a"
 dependencies = [
  "base64",
  "bergshamra-c14n",
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "bergshamra-crypto",
  "bergshamra-keys",
  "bergshamra-xml",
@@ -437,7 +446,7 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "644aeb454e2791fd16ce90db48a9175a2a464991dc76022e1ca7503815c79772"
 dependencies = [
- "bergshamra-core",
+ "bergshamra-core 0.4.0",
  "uppsala",
 ]
 
@@ -1714,7 +1723,7 @@ name = "es3"
 version = "0.1.0"
 dependencies = [
  "base64",
- "bergshamra-core",
+ "bergshamra-core 0.5.1",
  "bergshamra-dsig",
  "bergshamra-keys",
  "roxmltree",
