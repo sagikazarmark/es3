@@ -21,6 +21,6 @@ x509-cert = "0.2.5"
 zip = { version = "9.0.0-pre2", default-features = false, features = ["deflate-flate2-zlib-rs"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-bergshamra-core = "0.4.0"
+bergshamra-core = "0.6.1"
 bergshamra-dsig = "0.4.0"
 bergshamra-keys = "0.4.0"
