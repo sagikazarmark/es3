@@ -108,6 +108,12 @@ fn context(
         keys_manager.add_untrusted_cert(certificate.clone());
     }
     let context = bergshamra_dsig::DsigContext::new(keys_manager)
+        // XAdES signs SignedProperties under ds:Signature/ds:Object, which
+        // Bergshamra's strict position checks reject as a wrapping risk.
+        .with_strict_verification(false)
+        // ES3 reports signature value validity separately from trust, then
+        // applies pinned-certificate and trusted-anchor checks itself.
+        .with_trusted_keys_only(false)
         .with_enabled_key_data_x509(validate_x509 && !trusted_anchor_certificates.is_empty());
 
     Ok(context)
