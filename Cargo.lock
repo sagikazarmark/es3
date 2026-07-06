@@ -293,9 +293,9 @@ dependencies = [
 
 [[package]]
 name = "bergshamra-core"
-version = "0.6.2"
+version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7c4c1e0a660332053d466c37a913732145b03ea62b7fab4605e6c32be9c7b908"
+checksum = "ce61748314efbffac0cbd765d10fc729302857ccf56b7bc4773a120e47239173"
 dependencies = [
  "thiserror 2.0.18",
 ]
