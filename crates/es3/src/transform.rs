@@ -130,18 +130,12 @@ impl TransformChain {
             let current = bytes.take();
             bytes = Some(match transform {
                 Transform::Base64 => decode_base64(
-                    std::str::from_utf8(
-                        current
-                            .as_deref()
-                            .unwrap_or_else(|| payload_text.as_bytes()),
-                    )
-                    .unwrap_or_default(),
+                    std::str::from_utf8(current.as_deref().unwrap_or(payload_text.as_bytes()))
+                        .unwrap_or_default(),
                 )?,
-                Transform::Zip => unzip_single_file(
-                    current
-                        .as_deref()
-                        .unwrap_or_else(|| payload_text.as_bytes()),
-                )?,
+                Transform::Zip => {
+                    unzip_single_file(current.as_deref().unwrap_or(payload_text.as_bytes()))?
+                }
                 Transform::Encrypt => return Err(Error::EncryptedDocumentUnsupported),
             });
         }
@@ -172,12 +166,12 @@ impl TransformChain {
             }
         };
 
-        if !self.is_encrypted_payload() && self.has_zip() {
-            if let Some(bytes) = bytes {
-                if let Err(error) = unzip_single_file(&bytes) {
-                    issues.push(TransformPayloadIssue::Error(error));
-                }
-            }
+        if !self.is_encrypted_payload()
+            && self.has_zip()
+            && let Some(bytes) = bytes
+            && let Err(error) = unzip_single_file(&bytes)
+        {
+            issues.push(TransformPayloadIssue::Error(error));
         }
 
         issues

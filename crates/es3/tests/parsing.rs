@@ -113,10 +113,7 @@ fn from_reader_reports_path_free_read_errors() {
 
     impl std::io::Read for BrokenReader {
         fn read(&mut self, _buf: &mut [u8]) -> std::io::Result<usize> {
-            Err(std::io::Error::new(
-                std::io::ErrorKind::Other,
-                "reader failed",
-            ))
+            Err(std::io::Error::other("reader failed"))
         }
     }
 

@@ -99,17 +99,12 @@ impl ParsedDossier {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub enum ValidationLayerStatus {
+    #[default]
     NotChecked,
     Passed,
     Failed,
-}
-
-impl Default for ValidationLayerStatus {
-    fn default() -> Self {
-        Self::NotChecked
-    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
@@ -130,17 +125,12 @@ pub enum SignatureFindingKind {
     TrustError,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub enum SignatureScope {
+    #[default]
     Dossier,
     Document,
     All,
-}
-
-impl Default for SignatureScope {
-    fn default() -> Self {
-        Self::Dossier
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -177,18 +167,13 @@ pub struct SignatureReference {
     pub uri: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub enum XadesSigningCertificateStatus {
+    #[default]
     NotPresent,
     Matched,
     Mismatched,
     Invalid,
-}
-
-impl Default for XadesSigningCertificateStatus {
-    fn default() -> Self {
-        Self::NotPresent
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -286,10 +271,7 @@ pub struct VerificationReport {
 impl VerificationReport {
     pub fn checked_layers_ok(&self) -> bool {
         self.structure.is_ok()
-            && self
-                .signatures
-                .as_ref()
-                .map_or(true, SignatureReport::is_ok)
+            && self.signatures.as_ref().is_none_or(SignatureReport::is_ok)
             && [
                 self.validation.structural,
                 self.validation.cryptographic,
