@@ -113,13 +113,13 @@ impl Dossier {
                 structural,
                 cryptographic,
                 trust,
-                ..ValidationLayers::default()
             },
             structure,
             signatures,
         }
     }
 
+    #[allow(clippy::result_large_err)]
     pub fn require_checked_layers_ok(
         self,
         options: VerificationOptions,
