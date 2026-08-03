@@ -955,22 +955,22 @@ fn signer_certificate_report(
 ) -> std::result::Result<SignerCertificateReport, String> {
     let certificate = x509_cert::Certificate::from_der(certificate_der)
         .map_err(|error| format!("invalid signer certificate: {error}"))?;
-    let tbs_certificate = &certificate.tbs_certificate;
+    let tbs_certificate = certificate.tbs_certificate();
     let key_algorithm = crate::bergshamra_verify::certificate_key_algorithm(certificate_der)
         .unwrap_or_else(|| {
             tbs_certificate
-                .subject_public_key_info
+                .subject_public_key_info()
                 .algorithm
                 .oid
                 .to_string()
         });
-    let validity = &tbs_certificate.validity;
+    let validity = tbs_certificate.validity();
 
     Ok(SignerCertificateReport {
         sha256_fingerprint: sha256_fingerprint(certificate_der),
-        subject: tbs_certificate.subject.to_string(),
-        issuer: tbs_certificate.issuer.to_string(),
-        serial_number: tbs_certificate.serial_number.to_string(),
+        subject: tbs_certificate.subject().to_string(),
+        issuer: tbs_certificate.issuer().to_string(),
+        serial_number: tbs_certificate.serial_number().to_string(),
         not_before: validity.not_before.to_string(),
         not_after: validity.not_after.to_string(),
         key_algorithm,
@@ -981,8 +981,8 @@ fn signer_certificate_report(
 
 fn key_usage(certificate: &x509_cert::Certificate) -> Vec<String> {
     let Ok(Some((_, usage))) = certificate
-        .tbs_certificate
-        .get::<x509_cert::ext::pkix::KeyUsage>()
+        .tbs_certificate()
+        .get_extension::<x509_cert::ext::pkix::KeyUsage>()
     else {
         return Vec::new();
     };
@@ -1015,8 +1015,8 @@ fn key_usage(certificate: &x509_cert::Certificate) -> Vec<String> {
 
 fn extended_key_usage(certificate: &x509_cert::Certificate) -> Vec<String> {
     let Ok(Some((_, usage))) = certificate
-        .tbs_certificate
-        .get::<x509_cert::ext::pkix::ExtendedKeyUsage>()
+        .tbs_certificate()
+        .get_extension::<x509_cert::ext::pkix::ExtendedKeyUsage>()
     else {
         return Vec::new();
     };
