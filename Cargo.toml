@@ -3,7 +3,7 @@ members = ["crates/*"]
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 description = "ES3 dossier tools with XMLDSIG verification"
 edition = "2024"
 rust-version = "1.92"
@@ -15,7 +15,7 @@ keywords = ["es3", "dossier", "xmldsig", "xml", "extraction"]
 categories = ["parser-implementations", "cryptography", "command-line-utilities"]
 
 [workspace.dependencies]
-es3 = { path = "crates/es3", version = "0.1.0" }
+es3 = { path = "crates/es3", version = "0.2.0" }
 
 tempfile = "3.27.0"
 
