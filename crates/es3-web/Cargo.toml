@@ -37,7 +37,7 @@ dioxus = { version = "0.7.9", default-features = false, features = [
   "macro",
   "signals",
 ] }
-dioxus-i18n = "0.5.1"
+dioxus-i18n = "0.6.0"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 # Dioxus web history code is checked on native targets when the web feature is active.
